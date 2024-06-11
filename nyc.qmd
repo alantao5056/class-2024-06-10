@@ -1,0 +1,29 @@
+---
+title: "NYC"
+author: "Alan Tao"
+format: html
+execute:
+  echo: false
+---
+
+```{r}
+#| warning: FALSE
+#| message: FALSE
+
+library(tidyverse)
+```
+
+```{r}
+#| message: false
+
+nyc <- read_csv("data/nyc_tracts.csv")
+nyc |>
+  ggplot(aes(x = race, y = med_income)) +
+  geom_boxplot() +
+  scale_y_continuous(labels = scales::dollar_format()) +
+  labs(title = "Median Income For Each Race in Counties in New York",
+       subtitle = "White people have significantly more income",
+       x = "Race",
+       y = "Median Income")
+```
+
